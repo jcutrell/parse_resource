@@ -185,11 +185,11 @@ module ParseResource
 
     # Gets the current class's model name for the URI
     def self.model_name_uri
-      if self.model_name.to_s == "User"
+      if self.model_name.to_s == "User" or self.model_name.class < ParseUser
         "users"
       elsif self.model_name.to_s == "Installation"
         "installations"
-      elsif self.model_name.to_s == "Role"
+      elsif self.model_name.class <= ParseRole
         "roles"
       else
         "classes/#{self.model_name.to_s}"
